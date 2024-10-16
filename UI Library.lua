@@ -1118,11 +1118,11 @@ end
 
 local themes = {
 	Default = {
-		["Accent"] = Color3.fromRGB(255, 0, 0),
+		["Accent"] = Color3.fromRGB(128, 0, 0),
 		["Window Background"] = Color3.fromRGB(30, 30, 30),
 		["Window Border"] = Color3.fromRGB(45, 45, 45),
 		["Tab Background"] = Color3.fromRGB(20, 20, 20),
-		["Tab Border"] = Color3.fromRGB(45, 45, 45),
+		["Tab Border"] = Color3.fromRGB(77, 0, 0),
 		["Tab Toggle Background"] = Color3.fromRGB(28, 28, 28),
 		["Section Background"] = Color3.fromRGB(18, 18, 18),
 		["Section Border"] = Color3.fromRGB(35, 35, 35),
@@ -1150,11 +1150,11 @@ local themes = {
 	},
 
 	RogueHub = {
-		["Accent"] = Color3.fromRGB(255, 0, 0),
+		["Accent"] = Color3.fromRGB(128, 0, 0),
 		["Window Background"] = Color3.fromRGB(35, 30, 35),
 		["Window Border"] = Color3.fromRGB(50, 45, 50),
 		["Tab Background"] = Color3.fromRGB(25, 20, 25),
-		["Tab Border"] = Color3.fromRGB(255, 128, 128),
+		["Tab Border"] = Color3.fromRGB(77, 0, 0),
 		["Tab Toggle Background"] = Color3.fromRGB(35, 30, 35),
 		["Section Background"] = Color3.fromRGB(25, 20, 25),
 		["Section Border"] = Color3.fromRGB(55, 35, 55),
