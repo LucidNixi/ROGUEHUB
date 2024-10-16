@@ -223,7 +223,7 @@ getgenv().ExunysDeveloperESP = {
 		},
 
 		HeadDot = {
-			Enabled = true,
+			Enabled = false,
 			RainbowColor = false,
 			RainbowOutlineColor = false,
 
@@ -252,7 +252,7 @@ getgenv().ExunysDeveloperESP = {
 		},
 
 		HealthBar = {
-			Enabled = true,
+			Enabled = false,
 			RainbowOutlineColor = false,
 			Offset = 4,
 			Blue = 100,
