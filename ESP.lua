@@ -1,12 +1,3 @@
---[[
-
-	Universal ESP Module by Exunys © CC0 1.0 Universal (2023 - 2024)
-	https://github.com/Exunys
-
-]]
-
---// Caching
-
 local game = game
 local assert, loadstring, select, next, type, typeof, pcall, xpcall, setmetatable, getmetatable, tick, warn = assert, loadstring, select, next, type, typeof, pcall, xpcall, setmetatable, getmetatable, tick, warn
 local mathfloor, mathabs, mathcos, mathsin, mathrad, mathdeg, mathmin, mathmax, mathclamp, mathrandom = math.floor, math.abs, math.cos, math.sin, math.rad, math.deg, math.min, math.max, math.clamp, math.random
@@ -18,8 +9,6 @@ local getgenv, getrawmetatable, getupvalue, gethiddenproperty, cloneref, clonefu
 end, clonefunction or function(...)
 	return ...
 end
-
---// Custom Drawing Library
 
 if not Drawing or not Drawing.new or not Drawing.Fonts then
 	loadstring(game.HttpGet(game, "https://pastebin.com/raw/huyiRsK0"))()
@@ -37,7 +26,7 @@ local Color3fromRGB, Color3fromHSV = Color3.fromRGB, Color3.fromHSV
 local WorldToViewportPoint, GetPlayers, GetMouseLocation
 
 local GameMetatable = getrawmetatable and getrawmetatable(game) or {__index = function(self, Index)
-	return self[Index] -- Aux / helper function - if the executor doesn't support "getrawmetatable"
+	return self[Index]
 end}
 
 local __index = GameMetatable.__index
@@ -89,8 +78,6 @@ local IsDescendantOf = function(self, ...)
 	return typeof(self) == "Instance" and self.IsDescendantOf(self, ...)
 end
 
---// Optimized functions / methods
-
 local Connect, Disconnect, GetRenderProperty, SetRenderProperty = __index(game, "DescendantAdded").Connect
 
 local Degrade = (function()
@@ -102,7 +89,7 @@ local Degrade = (function()
 				local __index_render = getupvalue(getmetatable(TemporaryDrawing).__index, 4)
 
 				if __index_render and __index_render(TemporaryDrawing, "Thickness") == 1 then
-					return false -- No degrading, meaning the exploit fully supports the optimizations for the module.
+					return false
 				end
 			end
 		end
@@ -123,7 +110,7 @@ if not Degrade then
 	SetRenderProperty = getupvalue(getmetatable(TemporaryDrawing).__newindex, 4)
 	TemporaryDrawing.Remove(TemporaryDrawing)
 else
-	local DrawQuad = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/Exunys/Custom-Quad-Render-Object/main/Main.lua"))() -- Custom Quad Drawing Object
+	local DrawQuad = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/Exunys/Custom-Quad-Render-Object/main/Main.lua"))() 
 	local _Drawingnew = clonefunction(Drawing.new)
 
 	local TemporaryDrawing = Drawingnew("Line")
@@ -154,33 +141,27 @@ else
 	TemporaryDrawing = Drawingnew("Line")
 	RenderObjectMetatable = getmetatable(TemporaryDrawing)
 
-	GetRenderProperty, SetRenderProperty = RenderObjectMetatable.__index, RenderObjectMetatable.__newindex -- Must use the "__OBJECT" element for either of these functions otherwise you get a stack overflow.
+	GetRenderProperty, SetRenderProperty = RenderObjectMetatable.__index, RenderObjectMetatable.__newindex 
 
 	TemporaryDrawing.Remove(TemporaryDrawing)
 
-	warn("EXUNYS_ESP > Your exploit does not support this module's optimizations! The visuals might be laggy and decrease performance.")
+	warn("ROGUE_ESP > Your exploit does not support this module's optimizations! The visuals might be laggy and decrease performance.")
 end
 
---// Variables
-
 local Inf, Nan, Loaded, CrosshairParts = 1 / 0, 0 / 0, false, {}
-
---// Checking for multiple processes
 
 if ExunysDeveloperESP and ExunysDeveloperESP.Exit then
 	ExunysDeveloperESP:Exit()
 end
 
---// Settings
-
 getgenv().ExunysDeveloperESP = {
 	DeveloperSettings = {
-		Path = "Exunys Developer/Exunys ESP/Configuration.cfg",
+		Path = "",
 		UnwrapOnCharacterAbsence = false,
 		UpdateMode = "RenderStepped",
 		TeamCheckOption = "TeamColor",
-		RainbowSpeed = 1, -- Bigger = Slower
-		WidthBoundary = 1.5 -- Divisor - Smaller Value = Bigger Width
+		RainbowSpeed = 1,
+		WidthBoundary = 1.5
 	},
 
 	Settings = {
@@ -203,7 +184,7 @@ getgenv().ExunysDeveloperESP = {
 			Color = Color3fromRGB(255, 255, 255),
 			Transparency = 1,
 			Size = 14,
-			Font = DrawingFonts.Plex, -- UI, System, Plex, Monospace
+			Font = DrawingFonts.Plex,
 
 			OutlineColor = Color3fromRGB(0, 0, 0),
 			Outline = true,
@@ -230,7 +211,7 @@ getgenv().ExunysDeveloperESP = {
 		},
 
 		HeadDot = {
-			Enabled = true,
+			Enabled = false,
 			RainbowColor = false,
 			RainbowOutlineColor = false,
 
