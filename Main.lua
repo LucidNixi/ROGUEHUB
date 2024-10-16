@@ -641,6 +641,218 @@ Chams_Properties_Section:Slider({
 	end
 })
 
+--//Crosshair Tab
+
+--// Crosshair Tab
+
+local Crosshair_Settings = _Crosshair:Section({
+	Name = "Crosshair Settings (1 / 2)",
+	Side = "Left"
+})
+
+Crosshair_Settings:Toggle({
+	Name = "Enabled",
+	Flag = "Crosshair_Enabled",
+	Default = Crosshair.Enabled,
+	Callback = function(Value)
+		Crosshair.Enabled = Value
+	end
+})
+
+Crosshair_Settings:Toggle({
+	Name = "Enable ROBLOX Cursor",
+	Flag = "Cursor_Enabled",
+	Default = UserInputService.MouseIconEnabled,
+	Callback = SetMouseIconVisibility
+})
+
+AddValues(Crosshair_Settings, Crosshair, {"Enabled"}, "Crosshair_")
+
+Crosshair_Settings:Dropdown({
+	Name = "Position",
+	Flag = "Crosshair_Position",
+	Content = {"Mouse", "Center"},
+	Default = ({"Mouse", "Center"})[Crosshair.Position],
+	Callback = function(Value)
+		Crosshair.Position = Value == "Mouse" and 1 or 2
+	end
+})
+
+Crosshair_Settings:Slider({
+	Name = "Size",
+	Flag = "Crosshair_Size",
+	Default = Crosshair.Size,
+	Min = 1,
+	Max = 24,
+	Callback = function(Value)
+		Crosshair.Size = Value
+	end
+})
+
+Crosshair_Settings:Slider({
+	Name = "Gap Size",
+	Flag = "Crosshair_GapSize",
+	Default = Crosshair.GapSize,
+	Min = 0,
+	Max = 24,
+	Callback = function(Value)
+		Crosshair.GapSize = Value
+	end
+})
+
+Crosshair_Settings:Slider({
+	Name = "Rotation (Degrees)",
+	Flag = "Crosshair_Rotation",
+	Default = Crosshair.Rotation,
+	Min = -180,
+	Max = 180,
+	Callback = function(Value)
+		Crosshair.Rotation = Value
+	end
+})
+
+Crosshair_Settings:Slider({
+	Name = "Rotation Speed",
+	Flag = "Crosshair_RotationSpeed",
+	Default = Crosshair.RotationSpeed,
+	Min = 1,
+	Max = 20,
+	Callback = function(Value)
+		Crosshair.RotationSpeed = Value
+	end
+})
+
+Crosshair_Settings:Slider({
+	Name = "Pulsing Step",
+	Flag = "Crosshair_PulsingStep",
+	Default = Crosshair.PulsingStep,
+	Min = 0,
+	Max = 24,
+	Callback = function(Value)
+		Crosshair.PulsingStep = Value
+	end
+})
+
+local _Crosshair_Settings = _Crosshair:Section({
+	Name = "Crosshair Settings (2 / 2)",
+	Side = "Left"
+})
+
+_Crosshair_Settings:Slider({
+	Name = "Pulsing Speed",
+	Flag = "Crosshair_PulsingSpeed",
+	Default = Crosshair.PulsingSpeed,
+	Min = 1,
+	Max = 20,
+	Callback = function(Value)
+		Crosshair.PulsingSpeed = Value
+	end
+})
+
+_Crosshair_Settings:Slider({
+	Name = "Pulsing Boundary (Min)",
+	Flag = "Crosshair_Pulse_Min",
+	Default = Crosshair.PulsingBounds[1],
+	Min = 0,
+	Max = 24,
+	Callback = function(Value)
+		Crosshair.PulsingBounds[1] = Value
+	end
+})
+
+_Crosshair_Settings:Slider({
+	Name = "Pulsing Boundary (Max)",
+	Flag = "Crosshair_Pulse_Max",
+	Default = Crosshair.PulsingBounds[2],
+	Min = 0,
+	Max = 24,
+	Callback = function(Value)
+		Crosshair.PulsingBounds[2] = Value
+	end
+})
+
+_Crosshair_Settings:Slider({
+	Name = "Transparency",
+	Flag = "Crosshair_Transparency",
+	Default = Crosshair.Transparency * 10,
+	Min = 1,
+	Max = 10,
+	Callback = function(Value)
+		Crosshair.Transparency = Value / 10
+	end
+})
+
+_Crosshair_Settings:Slider({
+	Name = "Thickness",
+	Flag = "Crosshair_Thickness",
+	Default = Crosshair.Thickness,
+	Min = 1,
+	Max = 5,
+	Callback = function(Value)
+		Crosshair.Thickness = Value
+	end
+})
+
+local Crosshair_CenterDot = _Crosshair:Section({
+	Name = "Center Dot Settings",
+	Side = "Right"
+})
+
+Crosshair_CenterDot:Toggle({
+	Name = "Enabled",
+	Flag = "Crosshair_CenterDot_Enabled",
+	Default = CenterDot.Enabled,
+	Callback = function(Value)
+		CenterDot.Enabled = Value
+	end
+})
+
+AddValues(Crosshair_CenterDot, CenterDot, {"Enabled"}, "Crosshair_CenterDot_")
+
+Crosshair_CenterDot:Slider({
+	Name = "Size / Radius",
+	Flag = "Crosshair_CenterDot_Radius",
+	Default = CenterDot.Radius,
+	Min = 2,
+	Max = 8,
+	Callback = function(Value)
+		CenterDot.Radius = Value
+	end
+})
+
+Crosshair_CenterDot:Slider({
+	Name = "Sides",
+	Flag = "Crosshair_CenterDot_Sides",
+	Default = CenterDot.NumSides,
+	Min = 3,
+	Max = 30,
+	Callback = function(Value)
+		CenterDot.NumSides = Value
+	end
+})
+
+Crosshair_CenterDot:Slider({
+	Name = "Transparency",
+	Flag = "Crosshair_CenterDot_Transparency",
+	Default = CenterDot.Transparency * 10,
+	Min = 1,
+	Max = 10,
+	Callback = function(Value)
+		CenterDot.Transparency = Value / 10
+	end
+})
+
+Crosshair_CenterDot:Slider({
+	Name = "Thickness",
+	Flag = "Crosshair_CenterDot_Thickness",
+	Default = CenterDot.Thickness,
+	Min = 1,
+	Max = 5,
+	Callback = function(Value)
+		CenterDot.Thickness = Value
+	end
+})
+
 --// Settings Tab
 
 local SettingsSection = Settings:Section({
