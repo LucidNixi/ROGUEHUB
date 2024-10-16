@@ -20,9 +20,9 @@ local osdate = os.date
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Roblox-Functions-Library/main/Library.lua"))()
 
-local GUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/RogueHub-V2/main/src/UI%20Library.lua"))()
-local ESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Exunys-ESP/main/src/ESP.lua"))()
-local Aimbot = loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Aimbot-V3/main/src/Aimbot.lua"))()
+local GUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/LucidNixi/ROGUEHUB/refs/heads/main/UI%20Library.lua"))()
+local ESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/LucidNixi/ROGUEHUB/refs/heads/main/ESP.lua"))()
+local Aimbot = loadstring(game:HttpGet("https://raw.githubusercontent.com/LucidNixi/ROGUEHUB/refs/heads/main/Aimbot.lua"))()
 
 --// Variables
 
