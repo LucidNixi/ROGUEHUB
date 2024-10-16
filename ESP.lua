@@ -1,3 +1,5 @@
+--// Caching
+
 local game = game
 local assert, loadstring, select, next, type, typeof, pcall, xpcall, setmetatable, getmetatable, tick, warn = assert, loadstring, select, next, type, typeof, pcall, xpcall, setmetatable, getmetatable, tick, warn
 local mathfloor, mathabs, mathcos, mathsin, mathrad, mathdeg, mathmin, mathmax, mathclamp, mathrandom = math.floor, math.abs, math.cos, math.sin, math.rad, math.deg, math.min, math.max, math.clamp, math.random
@@ -9,6 +11,8 @@ local getgenv, getrawmetatable, getupvalue, gethiddenproperty, cloneref, clonefu
 end, clonefunction or function(...)
 	return ...
 end
+
+--// Custom Drawing Library
 
 if not Drawing or not Drawing.new or not Drawing.Fonts then
 	loadstring(game.HttpGet(game, "https://pastebin.com/raw/huyiRsK0"))()
@@ -26,7 +30,7 @@ local Color3fromRGB, Color3fromHSV = Color3.fromRGB, Color3.fromHSV
 local WorldToViewportPoint, GetPlayers, GetMouseLocation
 
 local GameMetatable = getrawmetatable and getrawmetatable(game) or {__index = function(self, Index)
-	return self[Index]
+	return self[Index] -- Aux / helper function - if the executor doesn't support "getrawmetatable"
 end}
 
 local __index = GameMetatable.__index
@@ -78,6 +82,8 @@ local IsDescendantOf = function(self, ...)
 	return typeof(self) == "Instance" and self.IsDescendantOf(self, ...)
 end
 
+--// Optimized functions / methods
+
 local Connect, Disconnect, GetRenderProperty, SetRenderProperty = __index(game, "DescendantAdded").Connect
 
 local Degrade = (function()
@@ -89,7 +95,7 @@ local Degrade = (function()
 				local __index_render = getupvalue(getmetatable(TemporaryDrawing).__index, 4)
 
 				if __index_render and __index_render(TemporaryDrawing, "Thickness") == 1 then
-					return false
+					return false -- No degrading, meaning the exploit fully supports the optimizations for the module.
 				end
 			end
 		end
@@ -110,7 +116,7 @@ if not Degrade then
 	SetRenderProperty = getupvalue(getmetatable(TemporaryDrawing).__newindex, 4)
 	TemporaryDrawing.Remove(TemporaryDrawing)
 else
-	local DrawQuad = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/Exunys/Custom-Quad-Render-Object/main/Main.lua"))() 
+	local DrawQuad = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/Exunys/Custom-Quad-Render-Object/main/Main.lua"))() -- Custom Quad Drawing Object
 	local _Drawingnew = clonefunction(Drawing.new)
 
 	local TemporaryDrawing = Drawingnew("Line")
@@ -141,27 +147,33 @@ else
 	TemporaryDrawing = Drawingnew("Line")
 	RenderObjectMetatable = getmetatable(TemporaryDrawing)
 
-	GetRenderProperty, SetRenderProperty = RenderObjectMetatable.__index, RenderObjectMetatable.__newindex 
+	GetRenderProperty, SetRenderProperty = RenderObjectMetatable.__index, RenderObjectMetatable.__newindex -- Must use the "__OBJECT" element for either of these functions otherwise you get a stack overflow.
 
 	TemporaryDrawing.Remove(TemporaryDrawing)
 
 	warn("ROGUE_ESP > Your exploit does not support this module's optimizations! The visuals might be laggy and decrease performance.")
 end
 
+--// Variables
+
 local Inf, Nan, Loaded, CrosshairParts = 1 / 0, 0 / 0, false, {}
+
+--// Checking for multiple processes
 
 if ExunysDeveloperESP and ExunysDeveloperESP.Exit then
 	ExunysDeveloperESP:Exit()
 end
 
+--// Settings
+
 getgenv().ExunysDeveloperESP = {
 	DeveloperSettings = {
-		Path = "",
+		Path = "Exunys Developer/Exunys ESP/Configuration.cfg",
 		UnwrapOnCharacterAbsence = false,
 		UpdateMode = "RenderStepped",
 		TeamCheckOption = "TeamColor",
-		RainbowSpeed = 1,
-		WidthBoundary = 1.5
+		RainbowSpeed = 1, -- Bigger = Slower
+		WidthBoundary = 1.5 -- Divisor - Smaller Value = Bigger Width
 	},
 
 	Settings = {
@@ -184,7 +196,7 @@ getgenv().ExunysDeveloperESP = {
 			Color = Color3fromRGB(255, 255, 255),
 			Transparency = 1,
 			Size = 14,
-			Font = DrawingFonts.Plex,
+			Font = DrawingFonts.Plex, -- UI, System, Plex, Monospace
 
 			OutlineColor = Color3fromRGB(0, 0, 0),
 			Outline = true,
@@ -211,7 +223,7 @@ getgenv().ExunysDeveloperESP = {
 		},
 
 		HeadDot = {
-			Enabled = false,
+			Enabled = true,
 			RainbowColor = false,
 			RainbowOutlineColor = false,
 
@@ -355,7 +367,7 @@ local CoreFunctions = {
 		local Result = ""
 
 		for _ = 1, Bits do
-			Result ..= ("EXUNYS_ESP")[mathrandom(1, 2) == 1 and "upper" or "lower"](stringchar(mathrandom(97, 122)))
+			Result ..= ("ROGUE_ESP")[mathrandom(1, 2) == 1 and "upper" or "lower"](stringchar(mathrandom(97, 122)))
 		end
 
 		return Result
@@ -1437,7 +1449,7 @@ local UtilityFunctions = {
 	end,
 
 	WrapObject = function(self, Object, PseudoName, Allowed, RenderDistance)
-		assert(self, "EXUNYS_ESP > UtilityFunctions.WrapObject - Internal error, unassigned parameter \"self\".")
+		assert(self, "ROGUE_ESP > UtilityFunctions.WrapObject - Internal error, unassigned parameter \"self\".")
 
 		if pcall(gethiddenproperty, Object, "PrimaryPart") then
 			Object = __index(Object, "PrimaryPart")
@@ -1493,7 +1505,7 @@ local UtilityFunctions = {
 			if not pcall(function()
 				return __index(Entry.Object, "Position"), __index(Entry.Object, "CFrame")
 			end) then
-				warn("EXUNYS_ESP > UtilityFunctions.WrapObject - Attempted to wrap object of an unsupported class type: \""..(__index(Entry.Object, "ClassName") or "N / A").."\"")
+				warn("ROGUE_ESP > UtilityFunctions.WrapObject - Attempted to wrap object of an unsupported class type: \""..(__index(Entry.Object, "ClassName") or "N / A").."\"")
 				return self.UnwrapObject(Entry.Hash)
 			end
 
@@ -1659,7 +1671,7 @@ Environment.UnwrapPlayers = function() -- (<void>) => <boolean> Success Status
 end
 
 Environment.UnwrapAll = function(self) -- METHOD | (<void>) => <void>
-	assert(self, "EXUNYS_ESP.UnwrapAll: Missing parameter #1 \"self\" <table>.")
+	assert(self, "ROGUE_ESP.UnwrapAll: Missing parameter #1 \"self\" <table>.")
 
 	if self.UnwrapPlayers() and CrosshairParts.LeftLine then
 		self.RemoveCrosshair()
@@ -1669,7 +1681,7 @@ Environment.UnwrapAll = function(self) -- METHOD | (<void>) => <void>
 end
 
 Environment.Restart = function(self) -- METHOD | (<void>) => <void>
-	assert(self, "EXUNYS_ESP.Restart: Missing parameter #1 \"self\" <table>.")
+	assert(self, "ROGUE_ESP.Restart: Missing parameter #1 \"self\" <table>.")
 
 	local Objects = {}
 
@@ -1692,7 +1704,7 @@ Environment.Restart = function(self) -- METHOD | (<void>) => <void>
 end
 
 Environment.Exit = function(self) -- METHOD | (<void>) => <void>
-	assert(self, "EXUNYS_ESP.Exit: Missing parameter #1 \"self\" <table>.")
+	assert(self, "ROGUE_ESP.Exit: Missing parameter #1 \"self\" <table>.")
 
 	if self:UnwrapAll() then
 		for _, Connection in next, self.UtilityAssets.ServiceConnections do
@@ -1759,9 +1771,9 @@ Environment.Load = function() -- (<void>) => <void>
 end
 
 Environment.UpdateConfiguration = function(DeveloperSettings, Settings, Properties) -- (<table> DeveloperSettings, <table> Settings, <table> Properties) => <table> New Environment
-	assert(DeveloperSettings, "EXUNYS_ESP.UpdateConfiguration: Missing parameter #1 \"DeveloperSettings\" <table>.")
-	assert(Settings, "EXUNYS_ESP.UpdateConfiguration: Missing parameter #2 \"Settings\" <table>.")
-	assert(Properties, "EXUNYS_ESP.UpdateConfiguration: Missing parameter #3 \"Properties\" <table>.")
+	assert(DeveloperSettings, "ROGUE_ESP.UpdateConfiguration: Missing parameter #1 \"DeveloperSettings\" <table>.")
+	assert(Settings, "ROGUE_ESP.UpdateConfiguration: Missing parameter #2 \"Settings\" <table>.")
+	assert(Properties, "ROGUE_ESP.UpdateConfiguration: Missing parameter #3 \"Properties\" <table>.")
 
 	getgenv().ExunysDeveloperESP.DeveloperSettings = DeveloperSettings
 	getgenv().ExunysDeveloperESP.Settings = Settings
@@ -1773,7 +1785,7 @@ Environment.UpdateConfiguration = function(DeveloperSettings, Settings, Properti
 end
 
 Environment.LoadConfiguration = function(self) -- METHOD | (<void>) => <void>
-	assert(self, "EXUNYS_ESP.LoadConfiguration: Missing parameter #1 \"self\" <table>.")
+	assert(self, "ROGUE_ESP.LoadConfiguration: Missing parameter #1 \"self\" <table>.")
 
 	local Path = self.DeveloperSettings.Path
 
@@ -1791,7 +1803,7 @@ Environment.LoadConfiguration = function(self) -- METHOD | (<void>) => <void>
 end
 
 Environment.SaveConfiguration = function(self) -- METHOD | (<void>) => <void>
-	assert(self, "EXUNYS_ESP.SaveConfiguration: Missing parameter #1 \"self\" <table>.")
+	assert(self, "ROGUE_ESP.SaveConfiguration: Missing parameter #1 \"self\" <table>.")
 
 	local DeveloperSettings = self.DeveloperSettings
 
