@@ -3827,6 +3827,3 @@ function library:Load(options)
 end
 
 return library
-
--- Forked from https://github.com/vozoid/ui-libraries/blob/main/drawing/void/source.lua
--- Edited by Exunys for RogueHub V2
