@@ -52,7 +52,6 @@ local HealthBarPositions = {"Top", "Bottom", "Left", "Right"}
 local General, GeneralSignal = MainFrame:Tab("General")
 local _Aimbot = MainFrame:Tab("Aimbot")
 local _ESP = MainFrame:Tab("ESP")
-local _Crosshair = MainFrame:Tab("Crosshair")
 local Settings = MainFrame:Tab("Settings")
 
 --// Functions
