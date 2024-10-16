@@ -18,7 +18,7 @@ if not Drawing or not Drawing.new or not Drawing.Fonts then
 	loadstring(game.HttpGet(game, "https://pastebin.com/raw/huyiRsK0"))()
 
 	repeat
-		wait(0.02)
+		wait(0.03)
 	until Drawing and Drawing.new and type(Drawing.new) == "function" and Drawing.Fonts and type(Drawing.Fonts) == "table"
 end
 
@@ -1499,7 +1499,7 @@ local UtilityFunctions = {
 			Connections = {}
 		}
 
-		repeat wait(0.02) until Entry.IsAPlayer and FindFirstChildOfClass(__index(Entry.Object, "Character"), "Humanoid") or true
+		repeat wait(0.03) until Entry.IsAPlayer and FindFirstChildOfClass(__index(Entry.Object, "Character"), "Humanoid") or true
 
 		if not Entry.IsAPlayer then
 			if not pcall(function()
@@ -1525,7 +1525,7 @@ local UtilityFunctions = {
 
 		spawn(function()
 			repeat
-				wait(0.02)
+				wait(0.03)
 			until Entry.Checks.Ready
 
 			CreatingFunctions.ESP(Entry)
@@ -1645,7 +1645,7 @@ setmetatable(Environment, {
 
 pcall(spawn, function()
 	if Environment.Settings.LoadConfigOnLaunch then
-		repeat wait(0.02) until Environment.LoadConfiguration
+		repeat wait(0.03) until Environment.LoadConfiguration
 
 		Environment:LoadConfiguration()
 	end
