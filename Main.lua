@@ -925,21 +925,12 @@ ProfilesSection:Button({
 	end
 })
 
-InformationSection:Label("Made by Exunys")
-
-InformationSection:Button({
-	Name = "Copy GitHub",
-	Callback = function()
-		setclipboard("https://github.com/Exunys")
-	end
-})
-
-InformationSection:Label("AirTeam © 2022 - "..osdate("%Y"))
+InformationSection:Label("RogueTeam © 2023 - "..osdate("%Y"))
 
 InformationSection:Button({
 	Name = "Copy Discord Invite",
 	Callback = function()
-		setclipboard("https://discord.gg/Ncz3H3quUZ")
+		setclipboard("https://discord.gg/roguerblx")
 	end
 })
 
