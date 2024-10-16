@@ -1150,7 +1150,7 @@ local themes = {
 	},
 
 	RogueHub = {
-		["Accent"] = Color3.fromRGB(150, 100, 150),
+		["Accent"] = Color3.fromRGB(255, 0, 0),
 		["Window Background"] = Color3.fromRGB(35, 30, 35),
 		["Window Border"] = Color3.fromRGB(50, 45, 50),
 		["Tab Background"] = Color3.fromRGB(25, 20, 25),
