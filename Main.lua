@@ -1,10 +1,10 @@
 --// Loaded Check
 
-if RogueHubLoaded or RogueHubLoading or RogueHub then
+if RogueLoaded or RogueLoading or Rogue then
 	return
 end
 
-getgenv().RogueHubLoading = true
+getgenv().RogueLoading = true
 
 --// Cache
 
@@ -888,7 +888,7 @@ SettingsSection:Button({
 		GUI:Unload()
 		ESP:Exit()
 		Aimbot:Exit()
-		getgenv().RogueHubLoaded = nil
+		getgenv().RogueLoaded = nil
 	end
 })
 
@@ -969,8 +969,8 @@ end)
 
 ESP.Load()
 Aimbot.Load()
-getgenv().RogueHubLoaded = true
-getgenv().RogueHubLoading = nil
+getgenv().RogueLoaded = true
+getgenv().RogueLoading = nil
 
 GeneralSignal:Fire()
 GUI:Close()
