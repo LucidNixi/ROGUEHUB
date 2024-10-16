@@ -168,7 +168,7 @@ end
 
 getgenv().ExunysDeveloperESP = {
 	DeveloperSettings = {
-		Path = "Exunys Developer/Exunys ESP/Configuration.cfg",
+		Path = "",
 		UnwrapOnCharacterAbsence = false,
 		UpdateMode = "RenderStepped",
 		TeamCheckOption = "TeamColor",
@@ -209,7 +209,7 @@ getgenv().ExunysDeveloperESP = {
 		},
 
 		Tracer = {
-			Enabled = true,
+			Enabled = false,
 			RainbowColor = false,
 			RainbowOutlineColor = false,
 			Position = 1, -- 1 = Bottom; 2 = Center; 3 = Mouse
@@ -252,7 +252,7 @@ getgenv().ExunysDeveloperESP = {
 		},
 
 		HealthBar = {
-			Enabled = false,
+			Enabled = true,
 			RainbowOutlineColor = false,
 			Offset = 4,
 			Blue = 100,
@@ -266,7 +266,7 @@ getgenv().ExunysDeveloperESP = {
 		},
 
 		Chams = {
-			Enabled = false,
+			Enabled = true,
 			RainbowColor = false,
 
 			Color = Color3fromRGB(255, 255, 255),
